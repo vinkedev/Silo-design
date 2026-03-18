@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siloé Design & Communication</title>
+    <title>Siloé Design & Communication - Produits digitaux</title>
     <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Reset */
         * {
             margin: 0;
             padding: 0;
@@ -20,6 +19,7 @@
             line-height: 1.6;
             color: #333;
             scroll-behavior: smooth;
+            background: #f4f7fc;
         }
 
         .container {
@@ -33,8 +33,8 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             z-index: 1000;
         }
 
@@ -48,11 +48,11 @@
         .logo h2 {
             font-size: 28px;
             font-weight: 700;
-            color: #2c3e50;
+            color: #1e3a5f; /* bleu foncé */
         }
 
         .logo span {
-            color: #e67e22;
+            color: #3498db; /* bleu vif */
         }
 
         .nav-menu {
@@ -66,13 +66,13 @@
 
         .nav-menu a {
             text-decoration: none;
-            color: #2c3e50;
+            color: #1e3a5f;
             font-weight: 500;
             transition: color 0.3s;
         }
 
         .nav-menu a:hover {
-            color: #e67e22;
+            color: #3498db;
         }
 
         .hamburger {
@@ -84,7 +84,7 @@
         .hamburger .bar {
             width: 25px;
             height: 3px;
-            background: #2c3e50;
+            background: #1e3a5f;
             margin: 3px 0;
             transition: 0.3s;
         }
@@ -92,7 +92,7 @@
         /* Hero */
         .hero {
             padding: 120px 0 60px;
-            background: #f9f9f9;
+            background: linear-gradient(135deg, #eef2f7 0%, #d9e2ef 100%);
         }
 
         .hero-container {
@@ -105,37 +105,38 @@
         .hero-content h1 {
             font-size: 48px;
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: #1e3a5f;
             line-height: 1.2;
         }
 
         .hero-content p {
             font-size: 18px;
             margin-bottom: 30px;
-            color: #7f8c8d;
+            color: #4a5568;
         }
 
         .btn {
             display: inline-block;
-            background: #e67e22;
+            background: #3498db;
             color: #fff;
             padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
             border: none;
             cursor: pointer;
         }
 
         .btn:hover {
-            background: #d35400;
+            background: #1e3a5f;
+            transform: scale(1.05);
         }
 
         .hero-image img {
             width: 100%;
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         /* Services Overview */
@@ -154,24 +155,24 @@
         .service-card {
             padding: 30px 20px;
             border-radius: 8px;
-            background: #f9f9f9;
+            background: #f4f7fc;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(52,152,219,0.2);
         }
 
         .service-card i {
             font-size: 40px;
-            color: #e67e22;
+            color: #3498db;
             margin-bottom: 15px;
         }
 
         .service-card h3 {
             margin-bottom: 10px;
-            color: #2c3e50;
+            color: #1e3a5f;
         }
 
         /* Sections générales */
@@ -180,14 +181,14 @@
         }
 
         .bg-light {
-            background: #f9f9f9;
+            background: #f4f7fc;
         }
 
         .section-title {
             text-align: center;
             font-size: 36px;
             margin-bottom: 50px;
-            color: #2c3e50;
+            color: #1e3a5f;
             position: relative;
         }
 
@@ -196,7 +197,7 @@
             display: block;
             width: 60px;
             height: 3px;
-            background: #e67e22;
+            background: #3498db;
             margin: 15px auto 0;
         }
 
@@ -205,7 +206,7 @@
             margin: 0 auto;
             text-align: center;
             font-size: 18px;
-            color: #7f8c8d;
+            color: #4a5568;
         }
 
         /* Stats */
@@ -218,14 +219,14 @@
 
         .stat-item h3 {
             font-size: 36px;
-            color: #e67e22;
+            color: #3498db;
         }
 
         .stat-item p {
-            color: #7f8c8d;
+            color: #4a5568;
         }
 
-        /* Cards (formations, blog) */
+        /* Cards (formations, blog, produits) */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -236,12 +237,13 @@
             background: #fff;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(52,152,219,0.15);
         }
 
         .card img {
@@ -256,27 +258,43 @@
 
         .card-body h3 {
             margin-bottom: 10px;
-            color: #2c3e50;
+            color: #1e3a5f;
         }
 
         .card-body p {
-            color: #7f8c8d;
+            color: #4a5568;
             margin-bottom: 10px;
+        }
+
+        .card .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #3498db;
+            margin: 10px 0;
         }
 
         .tag {
             display: inline-block;
-            background: #e67e22;
-            color: #fff;
+            background: #3498db20;
+            color: #1e3a5f;
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 12px;
         }
 
-        .read-more {
-            color: #e67e22;
+        .btn-small {
+            display: inline-block;
+            background: #3498db;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn-small:hover {
+            background: #1e3a5f;
         }
 
         /* Portfolio */
@@ -310,7 +328,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(230, 126, 34, 0.8);
+            background: rgba(30,58,95,0.8);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -346,7 +364,7 @@
         .testimonials cite {
             display: block;
             margin-top: 10px;
-            color: #e67e22;
+            color: #3498db;
             font-style: normal;
         }
 
@@ -359,29 +377,29 @@
 
         .contact-info h3 {
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: #1e3a5f;
         }
 
         .contact-info p {
             margin-bottom: 10px;
-            color: #7f8c8d;
+            color: #4a5568;
         }
 
         .contact-info i {
             margin-right: 10px;
-            color: #e67e22;
+            color: #3498db;
         }
 
         .social-links a {
             display: inline-block;
             margin: 20px 10px 0 0;
-            color: #2c3e50;
+            color: #1e3a5f;
             font-size: 20px;
             transition: color 0.3s;
         }
 
         .social-links a:hover {
-            color: #e67e22;
+            color: #3498db;
         }
 
         .contact-form input,
@@ -400,7 +418,7 @@
 
         /* Footer */
         footer {
-            background: #2c3e50;
+            background: #1e3a5f;
             color: #fff;
             text-align: center;
             padding: 20px 0;
@@ -421,7 +439,7 @@
                 width: 100%;
                 text-align: center;
                 transition: 0.3s;
-                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
             }
 
             .nav-menu.active {
@@ -463,6 +481,7 @@
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#business">Business</a></li>
                 <li><a href="#formations">Formations</a></li>
+                <li><a href="#produits">Produits</a></li>
                 <li><a href="#creations">Créations</a></li>
                 <li><a href="#ecriture">Écriture</a></li>
                 <li><a href="#secretariat">Secrétariat</a></li>
@@ -481,9 +500,9 @@
     <section id="accueil" class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1>Donnez vie à vos idées</h1>
-                <p>Siloé Design & Communication – Agence de communication, formations et créations visuelles.</p>
-                <a href="#contact" class="btn">Découvrir</a>
+                <h1>Des idées qui se transforment en succès</h1>
+                <p>Siloé Design & Communication – Agence de communication, formations, créations visuelles et produits digitaux.</p>
+                <a href="#produits" class="btn">Découvrir nos produits</a>
             </div>
             <div class="hero-image">
                 <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Creative workspace">
@@ -491,34 +510,39 @@
         </div>
     </section>
 
-    <!-- Services aperçu (icônes) -->
+    <!-- Services aperçu -->
     <section class="services-overview">
         <div class="container">
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-bullhorn"></i>
                     <h3>Business</h3>
-                    <p>Stratégie digitale, branding, campagnes.</p>
+                    <p>Stratégie, branding, campagnes.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <h3>Formations</h3>
-                    <p>Graphisme, vidéo, entrepreneuriat, développement personnel.</p>
+                    <p>Graphisme, vidéo, entrepreneuriat.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-paint-brush"></i>
                     <h3>Créations</h3>
-                    <p>Graphisme & montage vidéo sur mesure.</p>
+                    <p>Graphisme & montage vidéo.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-pen-fancy"></i>
                     <h3>Écriture</h3>
-                    <p>Rédaction web, journalisme, contenu.</p>
+                    <p>Rédaction, journalisme.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-file-alt"></i>
                     <h3>Secrétariat</h3>
-                    <p>Assistance administrative, gestion.</p>
+                    <p>Assistance administrative.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Produits digitaux</h3>
+                    <p>E-books, templates, formations.</p>
                 </div>
             </div>
         </div>
@@ -589,8 +613,53 @@
         </div>
     </section>
 
+    <!-- Produits digitaux (nouvelle section) -->
+    <section id="produits" class="section">
+        <div class="container">
+            <h2 class="section-title">Nos produits digitaux</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="E-book marketing">
+                    <div class="card-body">
+                        <h3>Guide du marketing digital</h3>
+                        <p>E-book de 150 pages : stratégies, outils, études de cas.</p>
+                        <div class="price">19,90 €</div>
+                        <a href="#" class="btn-small">Acheter</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Templates">
+                    <div class="card-body">
+                        <h3>Pack de templates Canva</h3>
+                        <p>50 templates pour réseaux sociaux, prêts à l'emploi.</p>
+                        <div class="price">29,90 €</div>
+                        <a href="#" class="btn-small">Acheter</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Formation vidéo">
+                    <div class="card-body">
+                        <h3>Formation Premiere Pro (vidéo)</h3>
+                        <p>10 heures de formation en ligne, exercices inclus.</p>
+                        <div class="price">49,90 €</div>
+                        <a href="#" class="btn-small">Acheter</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1557425955-df376b5903c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="E-book entrepreneuriat">
+                    <div class="card-body">
+                        <h3>Créer son entreprise en ligne</h3>
+                        <p>Guide complet pour lancer votre activité.</p>
+                        <div class="price">14,90 €</div>
+                        <a href="#" class="btn-small">Acheter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Créations (Portfolio) -->
-    <section id="creations" class="section">
+    <section id="creations" class="section bg-light">
         <div class="container">
             <h2 class="section-title">SDC Créations</h2>
             <div class="portfolio-grid">
@@ -627,7 +696,7 @@
     </section>
 
     <!-- Écriture & Journalisme -->
-    <section id="ecriture" class="section bg-light">
+    <section id="ecriture" class="section">
         <div class="container">
             <h2 class="section-title">SDC Écriture & Journalisme</h2>
             <div class="section-content">
@@ -643,7 +712,7 @@
     </section>
 
     <!-- Secrétariat -->
-    <section id="secretariat" class="section">
+    <section id="secretariat" class="section bg-light">
         <div class="container">
             <h2 class="section-title">SDC Secrétariat</h2>
             <div class="section-content">
@@ -653,7 +722,7 @@
     </section>
 
     <!-- Blog -->
-    <section id="blog" class="section bg-light">
+    <section id="blog" class="section">
         <div class="container">
             <h2 class="section-title">Derniers articles</h2>
             <div class="cards-grid">
@@ -686,7 +755,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section">
+    <section id="contact" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Contactez-nous</h2>
             <div class="contact-grid">
