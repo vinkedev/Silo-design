@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siloé Design & Communication</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo span {
+            color: #e67e22;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #e67e22;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background: #2c3e50;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 60px;
+            background: #f9f9f9;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #7f8c8d;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #d35400;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Services Overview */
+        .services-overview {
+            padding: 60px 0;
+            background: #fff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .service-card {
+            padding: 30px 20px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 40px;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        /* Sections générales */
+        .section {
+            padding: 80px 0;
+        }
+
+        .bg-light {
+            background: #f9f9f9;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #e67e22;
+            margin: 15px auto 0;
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 18px;
+            color: #7f8c8d;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-size: 36px;
+            color: #e67e22;
+        }
+
+        .stat-item p {
+            color: #7f8c8d;
+        }
+
+        /* Cards (formations, blog) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .card-body p {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e67e22;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .read-more {
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(230, 126, 34, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+            color: #fff;
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        /* Témoignages */
+        .testimonials {
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        .testimonials blockquote {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .testimonials cite {
+            display: block;
+            margin-top: 10px;
+            color: #e67e22;
+            font-style: normal;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #e67e22;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 20px 10px 0 0;
+            color: #2c3e50;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #e67e22;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .contact-form button {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: #fff;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <h2>SDC<span>.</span></h2>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#business">Business</a></li>
+                <li><a href="#formations">Formations</a></li>
+                <li><a href="#creations">Créations</a></li>
+                <li><a href="#ecriture">Écriture</a></li>
+                <li><a href="#secretariat">Secrétariat</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Accueil -->
+    <section id="accueil" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Donnez vie à vos idées</h1>
+                <p>Siloé Design & Communication – Agence de communication, formations et créations visuelles.</p>
+                <a href="#contact" class="btn">Découvrir</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Creative workspace">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services aperçu (icônes) -->
+    <section class="services-overview">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Business</h3>
+                    <p>Stratégie digitale, branding, campagnes.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Formations</h3>
+                    <p>Graphisme, vidéo, entrepreneuriat, développement personnel.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Créations</h3>
+                    <p>Graphisme & montage vidéo sur mesure.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-pen-fancy"></i>
+                    <h3>Écriture</h3>
+                    <p>Rédaction web, journalisme, contenu.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Secrétariat</h3>
+                    <p>Assistance administrative, gestion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business -->
+    <section id="business" class="section">
+        <div class="container">
+            <h2 class="section-title">SDC Business</h2>
+            <div class="section-content">
+                <p>Conseil en communication et marketing pour entreprises : stratégie digitale, branding, gestion des réseaux sociaux, campagnes publicitaires et études de marché. Nous vous accompagnons pour développer votre notoriété et atteindre vos objectifs.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Clients satisfaits</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100+</h3>
+                        <p>Projets réalisés</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>5 ans</h3>
+                        <p>d'expérience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations -->
+    <section id="formations" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">SDC Formations</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Graphisme">
+                    <div class="card-body">
+                        <h3>Graphisme</h3>
+                        <p>Maîtrisez Photoshop, Illustrator, InDesign – de débutant à expert.</p>
+                        <span class="tag">5 jours</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1574717024453-2b5c6b9d7b1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Montage vidéo">
+                    <div class="card-body">
+                        <h3>Montage vidéo</h3>
+                        <p>Premiere Pro, After Effects – réalisez vos films professionnels.</p>
+                        <span class="tag">4 jours</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Entrepreneuriat">
+                    <div class="card-body">
+                        <h3>Entrepreneuriat</h3>
+                        <p>Créez et gérez votre entreprise : business plan, financement, marketing.</p>
+                        <span class="tag">3 jours</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Développement personnel">
+                    <div class="card-body">
+                        <h3>Développement personnel</h3>
+                        <p>Confiance en soi, communication, gestion du stress.</p>
+                        <span class="tag">2 jours</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Créations (Portfolio) -->
+    <section id="creations" class="section">
+        <div class="container">
+            <h2 class="section-title">SDC Créations</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Graphisme 1">
+                    <div class="overlay">
+                        <h3>Branding</h3>
+                        <p>Création de logo</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Graphisme 2">
+                    <div class="overlay">
+                        <h3>Affiche</h3>
+                        <p>Campagne publicitaire</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1574717024453-2b5c6b9d7b1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vidéo 1">
+                    <div class="overlay">
+                        <h3>Clip vidéo</h3>
+                        <p>Montage événementiel</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vidéo 2">
+                    <div class="overlay">
+                        <h3>Motion design</h3>
+                        <p>Animation explicative</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Écriture & Journalisme -->
+    <section id="ecriture" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">SDC Écriture & Journalisme</h2>
+            <div class="section-content">
+                <p>Rédaction web optimisée SEO, articles de blog, communiqués de presse, interviews, reportages. Nous mettons votre histoire en mots pour captiver votre audience.</p>
+                <div class="testimonials">
+                    <blockquote>
+                        « Une plume talentueuse qui a su donner vie à notre projet. »
+                        <cite>— Client satisfait</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secrétariat -->
+    <section id="secretariat" class="section">
+        <div class="container">
+            <h2 class="section-title">SDC Secrétariat</h2>
+            <div class="section-content">
+                <p>Services administratifs externalisés : gestion de courrier, accueil téléphonique, prise de rendez-vous, classement, comptabilité simplifiée. Gagnez du temps et concentrez-vous sur votre cœur de métier.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Derniers articles</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog 1">
+                    <div class="card-body">
+                        <h3>5 tendances du marketing digital en 2025</h3>
+                        <p>Découvrez les stratégies qui feront la différence cette année.</p>
+                        <a href="#" class="read-more">Lire la suite →</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog 2">
+                    <div class="card-body">
+                        <h3>Comment créer une identité visuelle forte</h3>
+                        <p>Les clés d'une marque mémorable, du logo à la charte graphique.</p>
+                        <a href="#" class="read-more">Lire la suite →</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog 3">
+                    <div class="card-body">
+                        <h3>Les erreurs à éviter en montage vidéo</h3>
+                        <p>Conseils de pro pour un rendu professionnel.</p>
+                        <a href="#" class="read-more">Lire la suite →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Siloé Design & Communication</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 avenue de la Créativité, 75000 Paris</p>
+                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-envelope"></i> contact@siloedesign.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="text" name="nom" placeholder="Votre nom" required>
+                    <input type="email" name="email" placeholder="Votre email" required>
+                    <input type="text" name="sujet" placeholder="Sujet">
+                    <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+                    <button type="submit" class="btn">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Siloé Design & Communication. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fermer le menu quand on clique sur un lien
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
