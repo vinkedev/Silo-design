@@ -48,11 +48,11 @@
         .logo h2 {
             font-size: 28px;
             font-weight: 700;
-            color: #1e3a5f; /* bleu foncé */
+            color: #1e3a5f;
         }
 
         .logo span {
-            color: #3498db; /* bleu vif */
+            color: #3498db;
         }
 
         .nav-menu {
@@ -226,7 +226,7 @@
             color: #4a5568;
         }
 
-        /* Cards (formations, blog, produits) */
+        /* Cards (formations, produits) */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -297,75 +297,39 @@
             background: #1e3a5f;
         }
 
-        /* Portfolio */
-        .portfolio-grid {
+        /* Section mixte Écriture & Secrétariat */
+        .services-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
         }
 
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            height: 250px;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(30,58,95,0.8);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.5s;
-            color: #fff;
-        }
-
-        .portfolio-item:hover .overlay {
-            opacity: 1;
-        }
-
-        .overlay h3 {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        /* Témoignages */
-        .testimonials {
-            margin-top: 40px;
-            font-style: italic;
-        }
-
-        .testimonials blockquote {
+        .service-block {
             background: #fff;
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            position: relative;
         }
 
-        .testimonials cite {
-            display: block;
-            margin-top: 10px;
+        .service-block h3 {
+            color: #1e3a5f;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .service-block i {
             color: #3498db;
-            font-style: normal;
+            margin-right: 10px;
+        }
+
+        .service-block ul {
+            list-style: none;
+        }
+
+        .service-block li {
+            margin-bottom: 10px;
+            color: #4a5568;
         }
 
         /* Contact */
@@ -459,7 +423,8 @@
                 font-size: 36px;
             }
 
-            .contact-grid {
+            .contact-grid,
+            .services-list {
                 grid-template-columns: 1fr;
             }
 
@@ -482,10 +447,7 @@
                 <li><a href="#business">Business</a></li>
                 <li><a href="#formations">Formations</a></li>
                 <li><a href="#produits">Produits</a></li>
-                <li><a href="#creations">Créations</a></li>
-                <li><a href="#ecriture">Écriture</a></li>
-                <li><a href="#secretariat">Secrétariat</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li><a href="#support">Écriture & Secrétariat</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -505,6 +467,7 @@
                 <a href="#produits" class="btn">Découvrir nos produits</a>
             </div>
             <div class="hero-image">
+                <!-- À remplacer par la photo du responsable -->
                 <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Creative workspace">
             </div>
         </div>
@@ -525,19 +488,9 @@
                     <p>Graphisme, vidéo, entrepreneuriat.</p>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>Créations</h3>
-                    <p>Graphisme & montage vidéo.</p>
-                </div>
-                <div class="service-card">
                     <i class="fas fa-pen-fancy"></i>
-                    <h3>Écriture</h3>
-                    <p>Rédaction, journalisme.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-file-alt"></i>
-                    <h3>Secrétariat</h3>
-                    <p>Assistance administrative.</p>
+                    <h3>Écriture & Secrétariat</h3>
+                    <p>Rédaction, assistance administrative.</p>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-download"></i>
@@ -613,7 +566,7 @@
         </div>
     </section>
 
-    <!-- Produits digitaux (nouvelle section) -->
+    <!-- Produits digitaux -->
     <section id="produits" class="section">
         <div class="container">
             <h2 class="section-title">Nos produits digitaux</h2>
@@ -658,104 +611,40 @@
         </div>
     </section>
 
-    <!-- Créations (Portfolio) -->
-    <section id="creations" class="section bg-light">
+    <!-- Section mixte Écriture & Secrétariat -->
+    <section id="support" class="section bg-light">
         <div class="container">
-            <h2 class="section-title">SDC Créations</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Graphisme 1">
-                    <div class="overlay">
-                        <h3>Branding</h3>
-                        <p>Création de logo</p>
-                    </div>
+            <h2 class="section-title">Écriture & Secrétariat</h2>
+            <div class="services-list">
+                <div class="service-block">
+                    <h3><i class="fas fa-pen-fancy"></i> Écriture & Journalisme</h3>
+                    <ul>
+                        <li>Rédaction web (SEO)</li>
+                        <li>Articles de blog</li>
+                        <li>Communiqués de presse</li>
+                        <li>Interviews & reportages</li>
+                        <li>Ghostwriting</li>
+                    </ul>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Graphisme 2">
-                    <div class="overlay">
-                        <h3>Affiche</h3>
-                        <p>Campagne publicitaire</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1574717024453-2b5c6b9d7b1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vidéo 1">
-                    <div class="overlay">
-                        <h3>Clip vidéo</h3>
-                        <p>Montage événementiel</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vidéo 2">
-                    <div class="overlay">
-                        <h3>Motion design</h3>
-                        <p>Animation explicative</p>
-                    </div>
+                <div class="service-block">
+                    <h3><i class="fas fa-file-alt"></i> Secrétariat</h3>
+                    <ul>
+                        <li>Gestion de courrier</li>
+                        <li>Accueil téléphonique</li>
+                        <li>Prise de rendez-vous</li>
+                        <li>Classement & archivage</li>
+                        <li>Comptabilité simplifiée</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Écriture & Journalisme -->
-    <section id="ecriture" class="section">
-        <div class="container">
-            <h2 class="section-title">SDC Écriture & Journalisme</h2>
-            <div class="section-content">
-                <p>Rédaction web optimisée SEO, articles de blog, communiqués de presse, interviews, reportages. Nous mettons votre histoire en mots pour captiver votre audience.</p>
-                <div class="testimonials">
-                    <blockquote>
-                        « Une plume talentueuse qui a su donner vie à notre projet. »
-                        <cite>— Client satisfait</cite>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Secrétariat -->
-    <section id="secretariat" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">SDC Secrétariat</h2>
-            <div class="section-content">
-                <p>Services administratifs externalisés : gestion de courrier, accueil téléphonique, prise de rendez-vous, classement, comptabilité simplifiée. Gagnez du temps et concentrez-vous sur votre cœur de métier.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog" class="section">
-        <div class="container">
-            <h2 class="section-title">Derniers articles</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog 1">
-                    <div class="card-body">
-                        <h3>5 tendances du marketing digital en 2025</h3>
-                        <p>Découvrez les stratégies qui feront la différence cette année.</p>
-                        <a href="#" class="read-more">Lire la suite →</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog 2">
-                    <div class="card-body">
-                        <h3>Comment créer une identité visuelle forte</h3>
-                        <p>Les clés d'une marque mémorable, du logo à la charte graphique.</p>
-                        <a href="#" class="read-more">Lire la suite →</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog 3">
-                    <div class="card-body">
-                        <h3>Les erreurs à éviter en montage vidéo</h3>
-                        <p>Conseils de pro pour un rendu professionnel.</p>
-                        <a href="#" class="read-more">Lire la suite →</a>
-                    </div>
-                </div>
+            <div class="section-content" style="margin-top: 40px;">
+                <p>Des services sur mesure pour alléger votre quotidien et booster votre communication.</p>
             </div>
         </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section bg-light">
+    <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Contactez-nous</h2>
             <div class="contact-grid">
