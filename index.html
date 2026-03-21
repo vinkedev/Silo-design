@@ -7,6 +7,8 @@
     <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         * {
             margin: 0;
@@ -239,6 +241,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s;
+            position: relative;
         }
 
         .card:hover {
@@ -291,10 +294,21 @@
             text-decoration: none;
             font-weight: 500;
             transition: background 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-small:hover {
             background: #1e3a5f;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            margin-left: 10px;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
         }
 
         /* Section mixte Écriture & Secrétariat */
@@ -388,6 +402,61 @@
             padding: 20px 0;
         }
 
+        /* Admin */
+        .admin-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .admin-btn:hover {
+            opacity: 1;
+        }
+        .admin-panel {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .admin-panel.active {
+            display: block;
+        }
+        .login-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-form input {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .admin-form input, .admin-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hamburger {
@@ -467,7 +536,6 @@
                 <a href="#produits" class="btn">Découvrir nos produits</a>
             </div>
             <div class="hero-image">
-                <!-- À remplacer par la photo du responsable -->
                 <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Creative workspace">
             </div>
         </div>
@@ -566,52 +634,35 @@
         </div>
     </section>
 
-    <!-- Produits digitaux -->
+    <!-- Produits digitaux (dynamique via Supabase) -->
     <section id="produits" class="section">
         <div class="container">
             <h2 class="section-title">Nos produits digitaux</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="E-book marketing">
-                    <div class="card-body">
-                        <h3>Guide du marketing digital</h3>
-                        <p>E-book de 150 pages : stratégies, outils, études de cas.</p>
-                        <div class="price">19,90 €</div>
-                        <a href="#" class="btn-small">Acheter</a>
-                    </div>
+            <div id="products-container" class="cards-grid">
+                <div style="text-align:center; grid-column:1/-1;">Chargement des produits...</div>
+            </div>
+
+            <!-- Panneau d'administration (caché par défaut) -->
+            <div id="admin-panel" class="admin-panel">
+                <div id="admin-login" class="login-form">
+                    <input type="password" id="admin-password" placeholder="Mot de passe admin">
+                    <button class="btn-small" id="login-btn">Se connecter</button>
                 </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Templates">
-                    <div class="card-body">
-                        <h3>Pack de templates Canva</h3>
-                        <p>50 templates pour réseaux sociaux, prêts à l'emploi.</p>
-                        <div class="price">29,90 €</div>
-                        <a href="#" class="btn-small">Acheter</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Formation vidéo">
-                    <div class="card-body">
-                        <h3>Formation Premiere Pro (vidéo)</h3>
-                        <p>10 heures de formation en ligne, exercices inclus.</p>
-                        <div class="price">49,90 €</div>
-                        <a href="#" class="btn-small">Acheter</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1557425955-df376b5903c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="E-book entrepreneuriat">
-                    <div class="card-body">
-                        <h3>Créer son entreprise en ligne</h3>
-                        <p>Guide complet pour lancer votre activité.</p>
-                        <div class="price">14,90 €</div>
-                        <a href="#" class="btn-small">Acheter</a>
-                    </div>
+                <div id="admin-controls" style="display: none;">
+                    <h3>Gestion des produits</h3>
+                    <form id="add-product-form" class="admin-form">
+                        <input type="text" id="product-name" placeholder="Nom du produit" required>
+                        <textarea id="product-description" placeholder="Description" rows="2"></textarea>
+                        <input type="text" id="product-price" placeholder="Prix (ex: 19,90 €)" required>
+                        <input type="text" id="product-image" placeholder="URL de l'image">
+                        <button type="submit" class="btn-small">Ajouter le produit</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section mixte Écriture & Secrétariat -->
+    <!-- Écriture & Secrétariat -->
     <section id="support" class="section bg-light">
         <div class="container">
             <h2 class="section-title">Écriture & Secrétariat</h2>
@@ -671,24 +722,168 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2025 Siloé Design & Communication. Tous droits réservés.</p>
         </div>
     </footer>
 
+    <!-- Bouton admin discret -->
+    <button id="admin-toggle-btn" class="admin-btn" title="Administration">🔧</button>
+
     <script>
-        // Menu mobile
+        // Configuration Supabase
+        const SUPABASE_URL = 'https://otdiywrvzappbmjfkkyi.supabase.co';
+        const SUPABASE_ANON_KEY = 'b_publishable_tn6FW9OxsqNdKMg9uCuB5A_gZICo-Jy';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Mot de passe administrateur (à changer)
+        const ADMIN_PASSWORD = 'monMotDePasse123'; // Remplacez par votre mot de passe
+
+        let isAdmin = false;
+
+        // Charger les produits depuis Supabase et les afficher
+        async function loadProducts() {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '<div style="text-align:center; grid-column:1/-1;">Chargement...</div>';
+            
+            const { data, error } = await supabase
+                .from('products')
+                .select('*')
+                .order('created_at', { ascending: false });
+            
+            if (error) {
+                console.error('Erreur Supabase:', error);
+                container.innerHTML = '<div style="text-align:center; grid-column:1/-1;">Erreur de chargement des produits.</div>';
+                return;
+            }
+            
+            if (!data || data.length === 0) {
+                container.innerHTML = '<div style="text-align:center; grid-column:1/-1;">Aucun produit disponible pour le moment.</div>';
+                return;
+            }
+            
+            container.innerHTML = data.map(product => `
+                <div class="card" data-id="${product.id}">
+                    <img src="${product.image_url || 'https://via.placeholder.com/300x180?text=Image+non+disponible'}" alt="${escapeHtml(product.name)}">
+                    <div class="card-body">
+                        <h3>${escapeHtml(product.name)}</h3>
+                        <p>${escapeHtml(product.description || '')}</p>
+                        <div class="price">${escapeHtml(product.price)}</div>
+                        <a href="#" class="btn-small" onclick="return false;">Acheter</a>
+                        ${isAdmin ? `<button class="btn-small btn-danger" onclick="deleteProduct(${product.id})">Supprimer</button>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Ajouter un produit
+        async function addProduct(event) {
+            event.preventDefault();
+            if (!isAdmin) {
+                alert('Vous devez être administrateur pour ajouter un produit.');
+                return;
+            }
+            
+            const name = document.getElementById('product-name').value;
+            const description = document.getElementById('product-description').value;
+            const price = document.getElementById('product-price').value;
+            const image_url = document.getElementById('product-image').value;
+            
+            const { error } = await supabase
+                .from('products')
+                .insert([{ name, description, price, image_url }]);
+            
+            if (error) {
+                console.error(error);
+                alert('Erreur lors de l’ajout du produit.');
+            } else {
+                alert('Produit ajouté avec succès !');
+                document.getElementById('add-product-form').reset();
+                loadProducts(); // Rafraîchir la liste
+            }
+        }
+
+        // Supprimer un produit
+        window.deleteProduct = async function(id) {
+            if (!isAdmin) {
+                alert('Vous devez être administrateur pour supprimer un produit.');
+                return;
+            }
+            if (confirm('Voulez-vous vraiment supprimer ce produit ?')) {
+                const { error } = await supabase
+                    .from('products')
+                    .delete()
+                    .eq('id', id);
+                
+                if (error) {
+                    console.error(error);
+                    alert('Erreur lors de la suppression.');
+                } else {
+                    alert('Produit supprimé.');
+                    loadProducts();
+                }
+            }
+        };
+
+        // Connexion admin (mot de passe simple)
+        function loginAdmin() {
+            const password = document.getElementById('admin-password').value;
+            if (password === ADMIN_PASSWORD) {
+                isAdmin = true;
+                document.getElementById('admin-login').style.display = 'none';
+                document.getElementById('admin-controls').style.display = 'block';
+                document.getElementById('admin-panel').classList.add('active');
+                loadProducts(); // Recharger pour afficher les boutons supprimer
+            } else {
+                alert('Mot de passe incorrect');
+            }
+        }
+
+        // Afficher/masquer le panneau admin (sans réinitialiser l'état)
+        function toggleAdminPanel() {
+            const panel = document.getElementById('admin-panel');
+            if (panel.classList.contains('active')) {
+                panel.classList.remove('active');
+            } else {
+                panel.classList.add('active');
+                // Si déjà admin, on montre les contrôles ; sinon le formulaire de login
+                if (isAdmin) {
+                    document.getElementById('admin-login').style.display = 'none';
+                    document.getElementById('admin-controls').style.display = 'block';
+                } else {
+                    document.getElementById('admin-login').style.display = 'block';
+                    document.getElementById('admin-controls').style.display = 'none';
+                }
+            }
+        }
+
+        // Échapper les caractères HTML pour éviter les injections
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+            document.getElementById('login-btn').addEventListener('click', loginAdmin);
+            document.getElementById('add-product-form').addEventListener('submit', addProduct);
+            document.getElementById('admin-toggle-btn').addEventListener('click', toggleAdminPanel);
+        });
+
+        // Menu mobile (inchangé)
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
-
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-
-        // Fermer le menu quand on clique sur un lien
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
